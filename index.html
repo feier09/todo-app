@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的待办清单</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1><span class="title-icon">📝</span> 我的待办清单</h1>
+      <p class="subtitle">记录每一天的小目标</p>
+    </header>
+
+    <form class="add-form" id="addForm">
+      <input
+        type="text"
+        id="taskInput"
+        class="task-input"
+        placeholder="今天要做什么？"
+        autocomplete="off"
+        maxlength="200"
+      >
+      <div class="form-row">
+        <div class="priority-chips" id="priorityChips" role="group" aria-label="优先级">
+          <button type="button" class="priority-chip priority-low" data-priority="low">低</button>
+          <button type="button" class="priority-chip priority-medium active" data-priority="medium">中</button>
+          <button type="button" class="priority-chip priority-high" data-priority="high">高</button>
+        </div>
+        <button type="submit" class="btn btn-primary">➕ 添加</button>
+      </div>
+    </form>
+
+    <div class="stats" id="stats">
+      <span class="stat stat-pending">
+        <span class="stat-count" id="pendingCount">0</span>
+        <span class="stat-label">未完成</span>
+      </span>
+      <span class="stat-divider"></span>
+      <span class="stat stat-done">
+        <span class="stat-count" id="completedCount">0</span>
+        <span class="stat-label">已完成</span>
+      </span>
+    </div>
+
+    <ul class="task-list" id="taskList"></ul>
+
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🗒️</div>
+      <p class="empty-title">还没有任何任务</p>
+      <p class="empty-hint">在上方输入框中添加你的第一个任务吧</p>
+    </div>
+
+    <div class="action-row">
+      <button type="button" class="btn btn-clear" id="clearCompleted">🗑️ 清空已完成</button>
+      <button type="button" class="btn btn-clear btn-danger" id="clearAll">⚡ 全部清空</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-icon" id="modalIcon">⚠️</div>
+      <h3 class="modal-title" id="modalTitle">确认操作</h3>
+      <p class="modal-message" id="modalMessage"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-modal btn-modal-cancel" id="modalCancel">取消</button>
+        <button type="button" class="btn btn-modal btn-modal-confirm" id="modalConfirm">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
